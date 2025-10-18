@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+# Virtual Environments
+env/
+venv/
+Flaskapp/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Application-specific
+uploads/
+
+# Large files
+*.csv
+*.zip
+# OS-specific
+.DS_Store
+
+models/*.h5
