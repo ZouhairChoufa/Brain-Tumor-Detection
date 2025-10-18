@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Page</title>
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <div class="head_name">
+            <p><img src="{{ url_for('static', filename='logo-site-web.png') }}" alt="this is logo" class="logo"></p>
+        </div>
+        <ul class="nav-links">
+            <li class="link"><a href="#">Home</a></li>
+            <li id="link1" class="link"><a href="#">Model</a></li>
+            <li id="link3" class="link"><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <form class="model-container" id="model-form" enctype="multipart/form-data">
+        <div class="input-box" id="div-file">
+            <input type="file" class="img-field" name="imag" id="upfile" onchange="previewImage()">
+        </div>
+        <div class="top" id="yourBtn" onclick="triggerFileInput()">Choisir l'image d'IRM du cerveau</div>
+        <div id="image-preview-container">
+            <img id="image-preview" src="" alt="Prévisualisation de l'image">
+        </div>
+        <div class="input-box">
+            <p class="resultat">
+                Après traitement de l'image cérébrale fournie, le résultat obtenu par le modèle est : <span id="result"></span>
+            </p>
+        </div>
+        <div class="input-box">
+            <button type="button" class="submit" id="TraitBtn" value="Traiter" onclick="submitForm()">Traiter</button>
+        </div>
+    </form>
+
+    <script>
+        function triggerFileInput() {
+            document.getElementById("upfile").click();
+        }
+
+        function previewImage() {
+            const fileInput = document.getElementById("upfile").files[0];
+            if (!fileInput) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imagePreview = document.getElementById("image-preview");
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = "block";
+                document.getElementById("yourBtn").textContent = fileInput.name;
+            };
+            reader.readAsDataURL(fileInput);
+        }
+
+        // Fonction pour soumettre le formulaire via Fetch API
+        async function submitForm() {
+            const formData = new FormData(document.getElementById("model-form"));
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+                if (data.result) {
+                    document.getElementById("result").textContent = data.result;
+                    document.querySelector(".resultat").style.display = "block";
+                } else {
+                    alert(data.error || 'Erreur lors de la prédiction.');
+                }
+            } catch (error) {
+                console.error('Erreur lors de la soumission du formulaire:', error);
+                alert('Une erreur s\'est produite lors du traitement.');
+            }
+        }
+    </script>
+</body>
+</html>

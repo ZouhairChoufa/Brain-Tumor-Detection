@@ -1,0 +1,197 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    text-align: center;
+    background-color: rgb(21, 15, 46) ;
+}
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+.logo {
+    width: 190px;
+    height: auto;
+    top: 10px;
+    left: 10px;
+}
+.nav-links {
+    list-style: none;
+    display: contents;
+    align-items: left center;
+}
+.link a {
+    position: relative;
+    padding-bottom: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+.link a:hover {
+    color: #2246b1;
+}
+.link a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #2246b1;
+    transition: all 0.2s ease-in-out;
+}
+.link a:hover::after {
+    width: 100%;
+}
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+.nav-menu ul {
+    display: flex;
+}
+.nav-menu ul li {
+    list-style: none;
+}
+.nav-menu ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding: 0 25px;
+    transition: color 0.3s ease-in-out;
+}
+.nav-menu ul li a:hover, .nav-menu ul li a.active {
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+#div-file {
+    display: none;
+}
+#yourBtn {
+    position: relative;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    top: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px dashed #BBB;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+#yourBtn,#TraitBtn:hover {
+    background-color: #0056b3;
+}
+#TraitBtn{
+    position: relative;
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    top: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px dashed #BBB;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+#result{
+    position: relative;
+    color: brown;
+    font-weight: 900;
+    margin-left: 10px;
+}
+.resultat{
+    margin-top: 10pxpx;
+    margin-bottom: 8px;
+    color: white;
+    display: none;
+}
+.input-field {
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    height: 50px;
+    width: inherit;
+    padding: 0 10px 0 45px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: 0.2s ease;
+}
+#image-preview-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+}
+#image-preview {
+    display: none; 
+    max-width: 100%; 
+    height: auto;
+    border: 3px dashed #505d83; 
+    border-radius: 10px;
+}
+@media only screen and (max-width: 875px) {
+    .nav-menu {
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        height: 90vh;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        transition: 0.3s;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .nav-menu.responsive {
+        visibility: visible;
+        opacity: 1;
+        top: 100px;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-menu-btn {
+        display: block;
+    }
+    .nav-menu-btn i {
+        font-size: 25px;
+        color: #fff;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .nav-menu-btn i:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+} 
