@@ -25,5 +25,4 @@ uploads/
 
 models/*.h5
 
-
-static\logo-site-web.png
+static/*.png
